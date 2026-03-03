@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: #f0f4f8;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oceanview.controller.DashboardController">
+    <children>
+
+        <VBox prefWidth="230.0" style="-fx-background-color: #05142b;" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.topAnchor="0">
+            <effect>
+                <DropShadow color="#00000040" offsetX="4.0" radius="12.0" spread="0.05" />
+            </effect>
+            <children>
+
+                <VBox alignment="CENTER" prefHeight="120.0">
+                    <VBox.margin><Insets top="10.0" /></VBox.margin>
+                    <children>
+                        <ImageView fitHeight="50.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                            <image><Image url="@assets/images/logo.png" /></image>
+                        </ImageView>
+                        <Label text="OCEAN VIEW" textFill="#d4af37">
+                            <font><Font name="Times New Roman Bold" size="15.0" /></font>
+                            <VBox.margin><Insets top="6.0" /></VBox.margin>
+                        </Label>
+                        <Label text="Resort Management" textFill="#a0b3c6">
+                            <font><Font size="10.0" /></font>
+                        </Label>
+                    </children>
+                </VBox>
+
+                <Rectangle fill="#d4af37" height="1.0" opacity="0.4" width="180.0">
+                    <VBox.margin><Insets bottom="10.0" left="25.0" /></VBox.margin>
+                </Rectangle>
+
+                <Label text="MAIN MENU" textFill="#5a7a99">
+                    <font><Font name="System Bold" size="10.0" /></font>
+                    <VBox.margin><Insets bottom="6.0" left="25.0" /></VBox.margin>
+                </Label>
+
+                <Button fx:id="btnNavDashboard" mnemonicParsing="false" onAction="#showDashboard" prefHeight="40.0" prefWidth="210.0" style="-fx-background-color: #d4af37; -fx-background-radius: 8; -fx-text-fill: #05142b; -fx-alignment: CENTER_LEFT; -fx-cursor: hand;" text="🏠   Dashboard [F1]">
+                    <font><Font name="System Bold" size="12.0" /></font>
+                    <VBox.margin><Insets bottom="3.0" left="10.0" right="10.0" /></VBox.margin>
+                </Button>
+
+                <Button fx:id="btnNavReservations" mnemonicParsing="false" onAction="#showReservations" prefHeight="40.0" prefWidth="210.0" style="-fx-background-color: transparent; -fx-text-fill: #a0b3c6; -fx-alignment: CENTER_LEFT; -fx-cursor: hand; -fx-background-radius: 8;" text="📋   Reservations [F2]">
+                    <font><Font size="12.0" /></font>
+                    <VBox.margin><Insets bottom="3.0" left="10.0" right="10.0" /></VBox.margin>
+                </Button>
+
+                <Button fx:id="btnNavAddReservation" mnemonicParsing="false" onAction="#showAddReservation" prefHeight="40.0" prefWidth="210.0" style="-fx-background-color: transparent; -fx-text-fill: #a0b3c6; -fx-alignment: CENTER_LEFT; -fx-cursor: hand; -fx-background-radius: 8;" text="➕   New Reservation [F3]">
+                    <font><Font size="12.0" /></font>
+                    <VBox.margin><Insets bottom="3.0" left="10.0" right="10.0" /></VBox.margin>
+                </Button>
+
+                <Button fx:id="btnNavGuests" mnemonicParsing="false" onAction="#showGuests" prefHeight="40.0" prefWidth="210.0" style="-fx-background-color: transparent; -fx-text-fill: #a0b3c6; -fx-alignment: CENTER_LEFT; -fx-cursor: hand; -fx-background-radius: 8;" text="👥   Guests [F4]">
+                    <font><Font size="12.0" /></font>
+                    <VBox.margin><Insets bottom="3.0" left="10.0" right="10.0" /></VBox.margin>
+                </Button>
+
+                <Button fx:id="btnNavBilling" mnemonicParsing="false" onAction="#showBilling" prefHeight="40.0" prefWidth="210.0" style="-fx-background-color: transparent; -fx-text-fill: #a0b3c6; -fx-alignment: CENTER_LEFT; -fx-cursor: hand; -fx-background-radius: 8;" text="💳   Billing [F5]">
+                    <font><Font size="12.0" /></font>
+                    <VBox.margin><Insets bottom="3.0" left="10.0" right="10.0" /></VBox.margin>
+                </Button>
+
+                <Button fx:id="btnNavRooms" mnemonicParsing="false" onAction="#showRooms" prefHeight="40.0" prefWidth="210.0" style="-fx-background-color: transparent; -fx-text-fill: #a0b3c6; -fx-alignment: CENTER_LEFT; -fx-cursor: hand; -fx-background-radius: 8;" text="🛏   Rooms [F6]">
+                    <font><Font size="12.0" /></font>
+                    <VBox.margin><Insets bottom="3.0" left="10.0" right="10.0" /></VBox.margin>
+                </Button>
+
+                <VBox VBox.vgrow="ALWAYS" />
+
+                <Rectangle fill="#1e3a5f" height="1.0" opacity="0.8" width="180.0">
+                    <VBox.margin><Insets bottom="8.0" left="25.0" /></VBox.margin>
+                </Rectangle>
+
+                <Button fx:id="btnNavHelp" mnemonicParsing="false" onAction="#showHelp" prefHeight="40.0" prefWidth="210.0" style="-fx-background-color: transparent; -fx-text-fill: #a0b3c6; -fx-alignment: CENTER_LEFT; -fx-cursor: hand; -fx-background-radius: 8;" text="❓   Help [F11]">
+                    <font><Font size="12.0" /></font>
+                    <VBox.margin><Insets bottom="3.0" left="10.0" right="10.0" /></VBox.margin>
+                </Button>
+
+                <Button fx:id="btnLogout" mnemonicParsing="false" onAction="#handleLogout" prefHeight="40.0" prefWidth="210.0" style="-fx-background-color: transparent; -fx-text-fill: #e74c3c; -fx-alignment: CENTER_LEFT; -fx-cursor: hand; -fx-background-radius: 8;" text="🚪   Logout [F12]">
+                    <font><Font size="12.0" /></font>
+                    <VBox.margin><Insets bottom="15.0" left="10.0" right="10.0" /></VBox.margin>
+                </Button>
+
+            </children>
+        </VBox>
+
+        <VBox AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+            <children>
+
+                <HBox alignment="CENTER_LEFT" prefHeight="60.0" style="-fx-background-color: #ffffff; -fx-padding: 0 20 0 20;">
+                    <effect><DropShadow color="#00000015" offsetY="2.0" radius="6.0" /></effect>
+                    <children>
+                        <VBox alignment="CENTER_LEFT">
+                            <children>
+                                <Label fx:id="lblPageTitle" text="Dashboard" textFill="#05142b">
+                                    <font><Font name="System Bold" size="18.0" /></font>
+                                </Label>
+                                <Label fx:id="lblPageSubtitle" text="Welcome back! Here's your overview." textFill="#888888">
+                                    <font><Font size="11.0" /></font>
+                                </Label>
+                            </children>
+                        </VBox>
+                        <HBox HBox.hgrow="ALWAYS" />
+                        
+                        <HBox alignment="CENTER_LEFT" spacing="6.0" style="-fx-background-color: #f0f4f8; -fx-background-radius: 18; -fx-padding: 5 12 5 12;">
+                            <children>
+                                <Label style="-fx-text-fill: #888888;" text="🔍" />
+                                <TextField fx:id="txtSearch" prefWidth="190.0" promptText="Search reservations..." style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-text-fill: #333333;">
+                                    <font><Font size="12.0" /></font>
+                                </TextField>
+                            </children>
+                        </HBox>
+
+                        <HBox alignment="CENTER" spacing="8.0" style="-fx-background-color: #05142b; -fx-background-radius: 18; -fx-padding: 5 14 5 14;">
+                            <HBox.margin><Insets left="12.0" /></HBox.margin>
+                            <children>
+                                <Label style="-fx-text-fill: #d4af37;" text="👤" />
+                                <Label fx:id="lblLoggedInUser" text="Admin" textFill="#ffffff">
+                                    <font><Font name="System Bold" size="12.0" /></font>
+                                </Label>
+                            </children>
+                        </HBox>
+                    </children>
+                </HBox>
+
+                <ScrollPane fitToWidth="true" hbarPolicy="NEVER" style="-fx-background: #f0f4f8; -fx-background-color: #f0f4f8;                                    -fx-border-color: transparent; -fx-focus-color: transparent;" VBox.vgrow="ALWAYS">
+                    <content>
+                        <VBox spacing="14.0" style="-fx-padding: 18 20 18 20;">
+                            <children>
+
+                                <HBox spacing="14.0">
+                                    <children>
+                                        <VBox prefWidth="207.0" spacing="4.0" style="-fx-background-color: #ffffff; -fx-background-radius: 12; -fx-padding: 16;">
+                                            <effect><DropShadow color="#00000010" offsetY="2.0" radius="8.0" /></effect>
+                                            <children>
+                                                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                                    <children>
+                                                        <Label style="-fx-font-size: 20px;" text="📋" />
+                                                        <VBox>
+                                                            <children>
+                                                                <Label text="Total Reservations" textFill="#888888"><font><Font size="10.0" /></font></Label>
+                                                                <Label fx:id="lblTotalReservations" text="128" textFill="#05142b"><font><Font name="System Bold" size="24.0" /></font></Label>
+                                                            </children>
+                                                        </VBox>
+                                                    </children>
+                                                </HBox>
+                                                <Label text="▲ 12% from last month" textFill="#27ae60"><font><Font size="10.0" /></font></Label>
+                                            </children>
+                                        </VBox>
+
+                                        <VBox prefWidth="207.0" spacing="4.0" style="-fx-background-color: #eafaf1; -fx-background-radius: 12; -fx-padding: 16;">
+                                            <effect><DropShadow color="#00000025" offsetY="2.0" radius="8.0" /></effect>
+                                            <children>
+                                                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                                    <children>
+                                                        <Label style="-fx-font-size: 20px;" text="🛏" />
+                                                        <VBox>
+                                                            <children>
+                                                                <Label text="Checked In" textFill="#05142b"><font><Font size="10.0" /></font></Label>
+                                                                <Label fx:id="lblCheckedIn" text="34" textFill="#d4af37"><font><Font name="System Bold" size="24.0" /></font></Label>
+                                                            </children>
+                                                        </VBox>
+                                                    </children>
+                                                </HBox>
+                                                <Label text="Current occupancy" textFill="#05142b"><font><Font size="10.0" /></font></Label>
+                                            </children>
+                                        </VBox>
+
+                                        <VBox prefWidth="207.0" spacing="4.0" style="-fx-background-color: #ffffff; -fx-background-radius: 12; -fx-padding: 16;">
+                                            <effect><DropShadow color="#00000010" offsetY="2.0" radius="8.0" /></effect>
+                                            <children>
+                                                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                                    <children>
+                                                        <Label style="-fx-font-size: 20px;" text="🔑" />
+                                                        <VBox>
+                                                            <children>
+                                                                <Label text="Available Rooms" textFill="#888888"><font><Font size="10.0" /></font></Label>
+                                                                <Label fx:id="lblAvailableRooms" text="16" textFill="#05142b"><font><Font name="System Bold" size="24.0" /></font></Label>
+                                                            </children>
+                                                        </VBox>
+                                                    </children>
+                                                </HBox>
+                                                <Label text="Out of 50 total rooms" textFill="#888888"><font><Font size="10.0" /></font></Label>
+                                            </children>
+                                        </VBox>
+
+                                        <VBox prefWidth="207.0" spacing="4.0" style="-fx-background-color: #d4af37; -fx-background-radius: 12; -fx-padding: 16;">
+                                            <effect><DropShadow color="#d4af3740" offsetY="2.0" radius="8.0" /></effect>
+                                            <children>
+                                                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                                    <children>
+                                                        <Label style="-fx-font-size: 20px;" text="💰" />
+                                                        <VBox>
+                                                            <children>
+                                                                <Label text="Monthly Revenue" textFill="#7a6010"><font><Font size="10.0" /></font></Label>
+                                                                <Label fx:id="lblRevenue" text="LKR 485K" textFill="#05142b"><font><Font name="System Bold" size="20.0" /></font></Label>
+                                                            </children>
+                                                        </VBox>
+                                                    </children>
+                                                </HBox>
+                                                <Label text="▲ 8% from last month" textFill="#7a6010"><font><Font size="10.0" /></font></Label>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </HBox>
+
+                                <VBox spacing="10.0" style="-fx-background-color: #ffffff; -fx-background-radius: 12; -fx-padding: 14 16 14 16;">
+                                    <effect><DropShadow color="#00000010" offsetY="2.0" radius="8.0" /></effect>
+                                    <children>
+                                        <Label text="Quick Actions" textFill="#05142b"><font><Font name="System Bold" size="13.0" /></font></Label>
+                                        <HBox spacing="10.0">
+                                            <children>
+                                                <Button mnemonicParsing="false" onAction="#showAddReservation" prefHeight="36.0" prefWidth="158.0" style="-fx-background-color: #d4af37; -fx-background-radius: 7; -fx-text-fill: #05142b; -fx-cursor: hand;" text="+ New Reservation">
+                                                    <font><Font name="System Bold" size="12.0" /></font>
+                                                </Button>
+                                                <Button mnemonicParsing="false" onAction="#showGuests" prefHeight="36.0" prefWidth="138.0" style="-fx-background-color: transparent; -fx-border-color: #cccccc; -fx-border-radius: 7; -fx-background-radius: 7; -fx-text-fill: #333333; -fx-cursor: hand;" text="👥 View Guests">
+                                                    <font><Font size="12.0" /></font>
+                                                </Button>
+                                                <Button mnemonicParsing="false" onAction="#showBilling" prefHeight="36.0" prefWidth="138.0" style="-fx-background-color: transparent; -fx-border-color: #cccccc; -fx-border-radius: 7; -fx-background-radius: 7; -fx-text-fill: #333333; -fx-cursor: hand;" text="💳 Generate Bill">
+                                                    <font><Font size="12.0" /></font>
+                                                </Button>
+                                                <Button mnemonicParsing="false" onAction="#printReport" prefHeight="36.0" prefWidth="138.0" style="-fx-background-color: transparent; -fx-border-color: #cccccc; -fx-border-radius: 7; -fx-background-radius: 7; -fx-text-fill: #333333; -fx-cursor: hand;" text="🖨 Print Report">
+                                                    <font><Font size="12.0" /></font>
+                                                </Button>
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                </VBox>
+
+                                <VBox spacing="10.0" style="-fx-background-color: #ffffff; -fx-background-radius: 12; -fx-padding: 14 16 14 16;">
+                                    <effect><DropShadow color="#00000010" offsetY="2.0" radius="8.0" /></effect>
+                                    <children>
+                                        <HBox alignment="CENTER_LEFT">
+                                            <children>
+                                                <Label text="Recent Reservations" textFill="#05142b"><font><Font name="System Bold" size="13.0" /></font></Label>
+                                                <HBox HBox.hgrow="ALWAYS" />
+                                                <Button mnemonicParsing="false" onAction="#showReservations" prefHeight="26.0" style="-fx-background-color: transparent; -fx-text-fill: #d4af37; -fx-cursor: hand; -fx-border-color: transparent;" text="View All →">
+                                                    <font><Font name="System Bold" size="11.0" /></font>
+                                                </Button>
+                                            </children>
+                                        </HBox>
+                                        <TableView fx:id="tblRecentReservations" prefHeight="180.0" style="-fx-background-color: transparent; -fx-border-color: #eeeeee; -fx-border-radius: 6;">
+                                            <columns>
+                                                <TableColumn fx:id="colResNo" prefWidth="82.0" text="Res. No" />
+                                                <TableColumn fx:id="colGuestName" prefWidth="152.0" text="Guest Name" />
+                                                <TableColumn fx:id="colRoomType" prefWidth="112.0" text="Room Type" />
+                                                <TableColumn fx:id="colCheckIn" prefWidth="100.0" text="Check-In" />
+                                                <TableColumn fx:id="colCheckOut" prefWidth="100.0" text="Check-Out" />
+                                                <TableColumn fx:id="colStatus" prefWidth="92.0" text="Status" />
+                                                <TableColumn fx:id="colActions" prefWidth="88.0" text="Actions" />
+                                            </columns>
+                                        </TableView>
+                                    </children>
+                                </VBox>
+
+                                <HBox spacing="14.0">
+                                    <children>
+                                        <VBox prefWidth="320.0" spacing="8.0" style="-fx-background-color: #ffffff; -fx-background-radius: 12; -fx-padding: 14 16 14 16;">
+                                            <effect><DropShadow color="#00000010" offsetY="2.0" radius="8.0" /></effect>
+                                            <children>
+                                                <Label text="Room Status Overview" textFill="#05142b"><font><Font name="System Bold" size="13.0" /></font></Label>
+                                                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                                    <children>
+                                                        <Rectangle arcHeight="3" arcWidth="3" fill="#27ae60" height="11" width="11" />
+                                                        <Label prefWidth="90.0" text="Available" textFill="#555555"><font><Font size="12.0" /></font></Label>
+                                                        <Label fx:id="lblRoomAvailable" text="16 rooms" textFill="#05142b"><font><Font name="System Bold" size="12.0" /></font></Label>
+                                                    </children>
+                                                </HBox>
+                                                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                                    <children>
+                                                        <Rectangle arcHeight="3" arcWidth="3" fill="#d4af37" height="11" width="11" />
+                                                        <Label prefWidth="90.0" text="Occupied" textFill="#555555"><font><Font size="12.0" /></font></Label>
+                                                        <Label fx:id="lblRoomOccupied" text="28 rooms" textFill="#05142b"><font><Font name="System Bold" size="12.0" /></font></Label>
+                                                    </children>
+                                                </HBox>
+                                                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                                    <children>
+                                                        <Rectangle arcHeight="3" arcWidth="3" fill="#e74c3c" height="11" width="11" />
+                                                        <Label prefWidth="90.0" text="Maintenance" textFill="#555555"><font><Font size="12.0" /></font></Label>
+                                                        <Label fx:id="lblRoomMaintenance" text="6 rooms" textFill="#05142b"><font><Font name="System Bold" size="12.0" /></font></Label>
+                                                    </children>
+                                                </HBox>
+                                            </children>
+                                        </VBox>
+
+                                        <VBox spacing="8.0" style="-fx-background-color: #ffffff; -fx-background-radius: 12; -fx-padding: 14 16 14 16;" HBox.hgrow="ALWAYS">
+                                            <effect><DropShadow color="#00000010" offsetY="2.0" radius="8.0" /></effect>
+                                            <children>
+                                                <Label text="Today's Activity" textFill="#05142b"><font><Font name="System Bold" size="13.0" /></font></Label>
+                                                <HBox alignment="CENTER_LEFT" spacing="12.0" style="-fx-background-color: #eafaf1; -fx-background-radius: 8; -fx-padding: 9 12 9 12;">
+                                                    <children>
+                                                        <Label style="-fx-text-fill: #27ae60; -fx-font-size: 15px;" text="▼" />
+                                                        <VBox>
+                                                            <children>
+                                                                <Label text="Check-ins Today" textFill="#888888"><font><Font size="10.0" /></font></Label>
+                                                                <Label fx:id="lblCheckinsToday" text="7 Guests" textFill="#05142b"><font><Font name="System Bold" size="14.0" /></font></Label>
+                                                            </children>
+                                                        </VBox>
+                                                    </children>
+                                                </HBox>
+                                                <HBox alignment="CENTER_LEFT" spacing="12.0" style="-fx-background-color: #fdecea; -fx-background-radius: 8; -fx-padding: 9 12 9 12;">
+                                                    <children>
+                                                        <Label style="-fx-text-fill: #e74c3c; -fx-font-size: 15px;" text="⚠" />
+                                                        <VBox>
+                                                            <children>
+                                                                <Label text="Pending Payments" textFill="#888888"><font><Font size="10.0" /></font></Label>
+                                                                <Label fx:id="lblPendingPayments" text="3 Bills" textFill="#05142b"><font><Font name="System Bold" size="14.0" /></font></Label>
+                                                            </children>
+                                                        </VBox>
+                                                    </children>
+                                                </HBox>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </HBox>
+
+                            </children>
+                        </VBox>
+                    </content>
+                </ScrollPane>
+
+            </children>
+        </VBox>
+
+    </children>
+</AnchorPane>

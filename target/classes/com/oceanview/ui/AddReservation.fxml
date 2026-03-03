@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1200.0"
+            style="-fx-background-color: #f0f4f8;"
+            xmlns="http://javafx.com/javafx/24.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.oceanview.controller.AddReservationController">
+    <children>
+
+        <VBox prefWidth="230.0"
+              AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0"
+              style="-fx-background-color: #05142b;">
+            <effect>
+                <DropShadow color="#00000040" offsetX="4.0" radius="12.0" spread="0.05"/>
+            </effect>
+            <children>
+
+                <VBox alignment="CENTER" prefHeight="120.0">
+                    <VBox.margin><Insets top="10.0"/></VBox.margin>
+                    <children>
+                        <ImageView fitHeight="50.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                            <image><Image url="@assets/images/logo.png"/></image>
+                        </ImageView>
+                        <Label text="OCEAN VIEW" textFill="#d4af37">
+                            <font><Font name="Times New Roman Bold" size="15.0"/></font>
+                            <VBox.margin><Insets top="6.0"/></VBox.margin>
+                        </Label>
+                        <Label text="Resort Management" textFill="#a0b3c6">
+                            <font><Font size="10.0"/></font>
+                        </Label>
+                    </children>
+                </VBox>
+
+                <Rectangle height="1.0" width="180.0" fill="#d4af37" opacity="0.4">
+                    <VBox.margin><Insets left="25.0" bottom="10.0"/></VBox.margin>
+                </Rectangle>
+
+                <Label text="MAIN MENU" textFill="#5a7a99">
+                    <font><Font name="System Bold" size="10.0"/></font>
+                    <VBox.margin><Insets left="25.0" bottom="6.0"/></VBox.margin>
+                </Label>
+
+                <Button fx:id="btnNavDashboard" mnemonicParsing="false" onAction="#showDashboard"
+                        text=" &#x1F3E0;   Dashboard [F1]" prefWidth="210.0" prefHeight="40.0"
+                        style="-fx-background-color: transparent; -fx-text-fill: #a0b3c6; -fx-alignment: CENTER_LEFT; -fx-cursor: hand; -fx-background-radius: 8;">
+                    <font><Font size="12.0"/></font>
+                    <VBox.margin><Insets left="10.0" right="10.0" bottom="3.0"/></VBox.margin>
+                </Button>
+
+                <Button mnemonicParsing="false" onAction="#showReservations"
+                        text=" &#x1F4CB;   Reservations [F2]" prefWidth="210.0" prefHeight="40.0"
+                        style="-fx-background-color: transparent; -fx-text-fill: #a0b3c6; -fx-alignment: CENTER_LEFT; -fx-cursor: hand; -fx-background-radius: 8;">
+                    <font><Font size="12.0"/></font>
+                    <VBox.margin><Insets left="10.0" right="10.0" bottom="3.0"/></VBox.margin>
+                </Button>
+
+                <Button mnemonicParsing="false"
+                        text=" &#x2795;   New Reservation [F3]" prefWidth="210.0" prefHeight="40.0"
+                        style="-fx-background-color: #d4af37; -fx-background-radius: 8; -fx-text-fill: #05142b; -fx-alignment: CENTER_LEFT; -fx-cursor: hand;">
+                    <font><Font name="System Bold" size="12.0"/></font>
+                    <VBox.margin><Insets left="10.0" right="10.0" bottom="3.0"/></VBox.margin>
+                </Button>
+
+                <Button mnemonicParsing="false" onAction="#showGuests"
+                        text=" &#x1F465;   Guests [F4]" prefWidth="210.0" prefHeight="40.0"
+                        style="-fx-background-color: transparent; -fx-text-fill: #a0b3c6; -fx-alignment: CENTER_LEFT; -fx-cursor: hand; -fx-background-radius: 8;">
+                    <font><Font size="12.0"/></font>
+                    <VBox.margin><Insets left="10.0" right="10.0" bottom="3.0"/></VBox.margin>
+                </Button>
+
+                <Button mnemonicParsing="false" onAction="#showBilling"
+                        text=" &#x1F4B3;   Billing [F5]" prefWidth="210.0" prefHeight="40.0"
+                        style="-fx-background-color: transparent; -fx-text-fill: #a0b3c6; -fx-alignment: CENTER_LEFT; -fx-cursor: hand; -fx-background-radius: 8;">
+                    <font><Font size="12.0"/></font>
+                    <VBox.margin><Insets left="10.0" right="10.0" bottom="3.0"/></VBox.margin>
+                </Button>
+
+                <Button mnemonicParsing="false" onAction="#showRooms"
+                        text=" &#x1F6CF;   Rooms [F6]" prefWidth="210.0" prefHeight="40.0"
+                        style="-fx-background-color: transparent; -fx-text-fill: #a0b3c6; -fx-alignment: CENTER_LEFT; -fx-cursor: hand; -fx-background-radius: 8;">
+                    <font><Font size="12.0"/></font>
+                    <VBox.margin><Insets left="10.0" right="10.0" bottom="3.0"/></VBox.margin>
+                </Button>
+
+                <VBox VBox.vgrow="ALWAYS"/>
+
+                <Rectangle height="1.0" width="180.0" fill="#1e3a5f" opacity="0.8">
+                    <VBox.margin><Insets left="25.0" bottom="8.0"/></VBox.margin>
+                </Rectangle>
+
+                <Button mnemonicParsing="false" onAction="#showHelp"
+                        text=" &#x2753;   Help [F11]" prefWidth="210.0" prefHeight="40.0"
+                        style="-fx-background-color: transparent; -fx-text-fill: #a0b3c6; -fx-alignment: CENTER_LEFT; -fx-cursor: hand; -fx-background-radius: 8;">
+                    <font><Font size="12.0"/></font>
+                    <VBox.margin><Insets left="10.0" right="10.0" bottom="3.0"/></VBox.margin>
+                </Button>
+
+                <Button fx:id="btnLogout" mnemonicParsing="false" onAction="#handleLogout"
+                        text=" &#x1F6AA;   Logout [F12]" prefWidth="210.0" prefHeight="40.0"
+                        style="-fx-background-color: transparent; -fx-text-fill: #e74c3c; -fx-alignment: CENTER_LEFT; -fx-cursor: hand; -fx-background-radius: 8;">
+                    <font><Font size="12.0"/></font>
+                    <VBox.margin><Insets left="10.0" right="10.0" bottom="15.0"/></VBox.margin>
+                </Button>
+
+            </children>
+        </VBox>
+
+        <VBox AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="0"
+              AnchorPane.topAnchor="0"      AnchorPane.bottomAnchor="0">
+            <children>
+
+                <HBox prefHeight="60.0" alignment="CENTER_LEFT"
+                      style="-fx-background-color: #ffffff; -fx-padding: 0 20 0 20;">
+                    <effect><DropShadow color="#00000015" offsetY="2.0" radius="6.0"/></effect>
+                    <children>
+                        <VBox>
+                            <children>
+                                <Label text="New Reservation" textFill="#05142b">
+                                    <font><Font name="System Bold" size="18.0"/></font>
+                                </Label>
+                                <Label text="Fill in the details below to create a new booking." textFill="#888888">
+                                    <font><Font size="11.0"/></font>
+                                </Label>
+                            </children>
+                        </VBox>
+                        <HBox HBox.hgrow="ALWAYS"/>
+                        <HBox alignment="CENTER" spacing="8.0"
+                              style="-fx-background-color: #05142b; -fx-background-radius: 18; -fx-padding: 5 14 5 14;">
+                            <HBox.margin><Insets left="12.0"/></HBox.margin>
+                            <children>
+                                <Label text="&#x1F464;" style="-fx-text-fill: #d4af37;"/>
+                                <Label fx:id="lblLoggedInUser" text="Admin" textFill="#ffffff">
+                                    <font><Font name="System Bold" size="12.0"/></font>
+                                </Label>
+                            </children>
+                        </HBox>
+                    </children>
+                </HBox>
+
+                <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" hbarPolicy="NEVER"
+                            style="-fx-background: #f0f4f8; -fx-background-color: #f0f4f8;
+                                   -fx-border-color: transparent; -fx-focus-color: transparent;">
+                    <content>
+                        <HBox spacing="14.0" style="-fx-padding: 18 20 18 20;" alignment="TOP_LEFT">
+                            <children>
+
+                                <VBox spacing="14.0" HBox.hgrow="ALWAYS">
+                                    <children>
+
+                                        <VBox spacing="10.0"
+                                              style="-fx-background-color: #ffffff; -fx-background-radius: 12; -fx-padding: 14 16 14 16;">
+                                            <effect><DropShadow color="#00000010" offsetY="2.0" radius="8.0"/></effect>
+                                            <children>
+                                                <HBox alignment="CENTER_LEFT" spacing="8.0">
+                                                    <children>
+                                                        <Rectangle width="4" height="18" fill="#d4af37" arcWidth="2" arcHeight="2"/>
+                                                        <Label text="Reservation Information" textFill="#05142b">
+                                                            <font><Font name="System Bold" size="13.0"/></font>
+                                                        </Label>
+                                                    </children>
+                                                </HBox>
+
+                                                <HBox spacing="14.0">
+                                                    <children>
+                                                        <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                                            <children>
+                                                                <Label text="RESERVATION NUMBER" textFill="#888888">
+                                                                    <font><Font name="System Bold" size="10.0"/></font>
+                                                                </Label>
+                                                                <TextField fx:id="txtResNo"
+                                                                           promptText="Auto-generated on save"
+                                                                           prefHeight="36.0" editable="false"
+                                                                           style="-fx-background-color: #f8f9fa; -fx-background-radius: 7;
+                                                                                  -fx-border-color: #e8e8e8; -fx-border-radius: 7;
+                                                                                  -fx-text-fill: #999999; -fx-padding: 0 10 0 10;">
+                                                                    <font><Font size="12.0"/></font>
+                                                                </TextField>
+                                                            </children>
+                                                        </VBox>
+                                                        <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                                            <children>
+                                                                <Label text="ROOM TYPE  *" textFill="#888888">
+                                                                    <font><Font name="System Bold" size="10.0"/></font>
+                                                                </Label>
+                                                                <ComboBox fx:id="cmbRoomType"
+                                                                          promptText="Select room type..."
+                                                                          prefWidth="99999.0" prefHeight="36.0"
+                                                                          onAction="#onRoomTypeSelected"
+                                                                          style="-fx-background-color: #ffffff; -fx-background-radius: 7;
+                                                                                 -fx-border-color: #e8e8e8; -fx-border-radius: 7;">
+                                                                </ComboBox>
+                                                                <Label fx:id="errRoomType" text="" textFill="#e74c3c">
+                                                                    <font><Font size="10.0"/></font>
+                                                                </Label>
+                                                            </children>
+                                                        </VBox>
+                                                    </children>
+                                                </HBox>
+
+                                                <HBox spacing="14.0">
+                                                    <children>
+                                                        <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                                            <children>
+                                                                <Label text="CHECK-IN DATE  *" textFill="#888888">
+                                                                    <font><Font name="System Bold" size="10.0"/></font>
+                                                                </Label>
+                                                                <DatePicker fx:id="dpCheckIn"
+                                                                            prefWidth="99999.0" prefHeight="36.0"
+                                                                            onAction="#onDateChanged"
+                                                                            style="-fx-background-color: #ffffff; -fx-background-radius: 7;
+                                                                                   -fx-border-color: #e8e8e8; -fx-border-radius: 7;">
+                                                                </DatePicker>
+                                                                <Label fx:id="errCheckIn" text="" textFill="#e74c3c">
+                                                                    <font><Font size="10.0"/></font>
+                                                                </Label>
+                                                            </children>
+                                                        </VBox>
+                                                        <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                                            <children>
+                                                                <Label text="CHECK-OUT DATE  *" textFill="#888888">
+                                                                    <font><Font name="System Bold" size="10.0"/></font>
+                                                                </Label>
+                                                                <DatePicker fx:id="dpCheckOut"
+                                                                            prefWidth="99999.0" prefHeight="36.0"
+                                                                            onAction="#onDateChanged"
+                                                                            style="-fx-background-color: #ffffff; -fx-background-radius: 7;
+                                                                                   -fx-border-color: #e8e8e8; -fx-border-radius: 7;">
+                                                                </DatePicker>
+                                                                <Label fx:id="errCheckOut" text="" textFill="#e74c3c">
+                                                                    <font><Font size="10.0"/></font>
+                                                                </Label>
+                                                            </children>
+                                                        </VBox>
+                                                    </children>
+                                                </HBox>
+
+                                                <HBox spacing="14.0">
+                                                    <children>
+                                                        <VBox spacing="5.0" prefWidth="160.0">
+                                                            <children>
+                                                                <Label text="NO. OF GUESTS" textFill="#888888">
+                                                                    <font><Font name="System Bold" size="10.0"/></font>
+                                                                </Label>
+                                                                <ComboBox fx:id="cmbGuests"
+                                                                          promptText="Select"
+                                                                          prefWidth="99999.0" prefHeight="36.0"
+                                                                          style="-fx-background-color: #ffffff; -fx-background-radius: 7;
+                                                                                 -fx-border-color: #e8e8e8; -fx-border-radius: 7;">
+                                                                </ComboBox>
+                                                            </children>
+                                                        </VBox>
+                                                        <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                                            <children>
+                                                                <Label text="SPECIAL REQUESTS" textFill="#888888">
+                                                                    <font><Font name="System Bold" size="10.0"/></font>
+                                                                </Label>
+                                                                <TextArea fx:id="txtSpecialRequests"
+                                                                          promptText="e.g. sea-facing room, extra bed..."
+                                                                          prefHeight="68.0" wrapText="true"
+                                                                          style="-fx-background-color: #ffffff; -fx-background-radius: 7;
+                                                                                 -fx-border-color: #e8e8e8; -fx-border-radius: 7;
+                                                                                 -fx-padding: 6 10 6 10;">
+                                                                    <font><Font size="12.0"/></font>
+                                                                </TextArea>
+                                                            </children>
+                                                        </VBox>
+                                                    </children>
+                                                </HBox>
+
+                                            </children>
+                                        </VBox>
+
+                                        <VBox spacing="10.0"
+                                              style="-fx-background-color: #ffffff; -fx-background-radius: 12; -fx-padding: 14 16 14 16;">
+                                            <effect><DropShadow color="#00000010" offsetY="2.0" radius="8.0"/></effect>
+                                            <children>
+
+                                                <HBox alignment="CENTER_LEFT" spacing="8.0">
+                                                    <children>
+                                                        <Rectangle width="4" height="18" fill="#3498db" arcWidth="2" arcHeight="2"/>
+                                                        <Label text="Guest Information" textFill="#05142b">
+                                                            <font><Font name="System Bold" size="13.0"/></font>
+                                                        </Label>
+                                                    </children>
+                                                </HBox>
+
+                                                <HBox spacing="14.0">
+                                                    <children>
+                                                        <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                                            <children>
+                                                                <Label text="FIRST NAME  *" textFill="#888888">
+                                                                    <font><Font name="System Bold" size="10.0"/></font>
+                                                                </Label>
+                                                                <TextField fx:id="txtFirstName" promptText="John"
+                                                                           prefHeight="36.0"
+                                                                           style="-fx-background-color: #ffffff; -fx-background-radius: 7;
+                                                                                  -fx-border-color: #e8e8e8; -fx-border-radius: 7;
+                                                                                  -fx-padding: 0 10 0 10;">
+                                                                    <font><Font size="12.0"/></font>
+                                                                </TextField>
+                                                                <Label fx:id="errFirstName" text="" textFill="#e74c3c">
+                                                                    <font><Font size="10.0"/></font>
+                                                                </Label>
+                                                            </children>
+                                                        </VBox>
+                                                        <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                                            <children>
+                                                                <Label text="LAST NAME  *" textFill="#888888">
+                                                                    <font><Font name="System Bold" size="10.0"/></font>
+                                                                </Label>
+                                                                <TextField fx:id="txtLastName" promptText="Perera"
+                                                                           prefHeight="36.0"
+                                                                           style="-fx-background-color: #ffffff; -fx-background-radius: 7;
+                                                                                  -fx-border-color: #e8e8e8; -fx-border-radius: 7;
+                                                                                  -fx-padding: 0 10 0 10;">
+                                                                    <font><Font size="12.0"/></font>
+                                                                </TextField>
+                                                                <Label fx:id="errLastName" text="" textFill="#e74c3c">
+                                                                    <font><Font size="10.0"/></font>
+                                                                </Label>
+                                                            </children>
+                                                        </VBox>
+                                                    </children>
+                                                </HBox>
+
+                                                <HBox spacing="14.0">
+                                                    <children>
+                                                        <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                                            <children>
+                                                                <Label text="CONTACT NUMBER  *" textFill="#888888">
+                                                                    <font><Font name="System Bold" size="10.0"/></font>
+                                                                </Label>
+                                                                <TextField fx:id="txtContact" promptText="+94 77 000 0000"
+                                                                           prefHeight="36.0"
+                                                                           style="-fx-background-color: #ffffff; -fx-background-radius: 7;
+                                                                                  -fx-border-color: #e8e8e8; -fx-border-radius: 7;
+                                                                                  -fx-padding: 0 10 0 10;">
+                                                                    <font><Font size="12.0"/></font>
+                                                                </TextField>
+                                                                <Label fx:id="errContact" text="" textFill="#e74c3c">
+                                                                    <font><Font size="10.0"/></font>
+                                                                </Label>
+                                                            </children>
+                                                        </VBox>
+                                                        <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                                            <children>
+                                                                <Label text="NIC / PASSPORT" textFill="#888888">
+                                                                    <font><Font name="System Bold" size="10.0"/></font>
+                                                                </Label>
+                                                                <TextField fx:id="txtNic" promptText="200012345678"
+                                                                           prefHeight="36.0"
+                                                                           style="-fx-background-color: #ffffff; -fx-background-radius: 7;
+                                                                                  -fx-border-color: #e8e8e8; -fx-border-radius: 7;
+                                                                                  -fx-padding: 0 10 0 10;">
+                                                                    <font><Font size="12.0"/></font>
+                                                                </TextField>
+                                                            </children>
+                                                        </VBox>
+                                                    </children>
+                                                </HBox>
+
+                                                <HBox spacing="14.0">
+                                                    <children>
+                                                        <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                                            <children>
+                                                                <Label text="EMAIL ADDRESS" textFill="#888888">
+                                                                    <font><Font name="System Bold" size="10.0"/></font>
+                                                                </Label>
+                                                                <TextField fx:id="txtEmail" promptText="john@example.com"
+                                                                           prefHeight="36.0"
+                                                                           style="-fx-background-color: #ffffff; -fx-background-radius: 7;
+                                                                                  -fx-border-color: #e8e8e8; -fx-border-radius: 7;
+                                                                                  -fx-padding: 0 10 0 10;">
+                                                                    <font><Font size="12.0"/></font>
+                                                                </TextField>
+                                                                <Label fx:id="errEmail" text="" textFill="#e74c3c">
+                                                                    <font><Font size="10.0"/></font>
+                                                                </Label>
+                                                            </children>
+                                                        </VBox>
+                                                        <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                                            <children>
+                                                                <Label text="NATIONALITY" textFill="#888888">
+                                                                    <font><Font name="System Bold" size="10.0"/></font>
+                                                                </Label>
+                                                                <TextField fx:id="txtNationality" promptText="Sri Lankan"
+                                                                           prefHeight="36.0"
+                                                                           style="-fx-background-color: #ffffff; -fx-background-radius: 7;
+                                                                                  -fx-border-color: #e8e8e8; -fx-border-radius: 7;
+                                                                                  -fx-padding: 0 10 0 10;">
+                                                                    <font><Font size="12.0"/></font>
+                                                                </TextField>
+                                                            </children>
+                                                        </VBox>
+                                                    </children>
+                                                </HBox>
+
+                                                <VBox spacing="5.0">
+                                                    <children>
+                                                        <Label text="ADDRESS  *" textFill="#888888">
+                                                            <font><Font name="System Bold" size="10.0"/></font>
+                                                        </Label>
+                                                        <TextArea fx:id="txtAddress"
+                                                                  promptText="No. 25, Temple Road, Colombo 03"
+                                                                  prefHeight="64.0" wrapText="true"
+                                                                  style="-fx-background-color: #ffffff; -fx-background-radius: 7;
+                                                                         -fx-border-color: #e8e8e8; -fx-border-radius: 7;
+                                                                         -fx-padding: 6 10 6 10;">
+                                                            <font><Font size="12.0"/></font>
+                                                        </TextArea>
+                                                        <Label fx:id="errAddress" text="" textFill="#e74c3c">
+                                                            <font><Font size="10.0"/></font>
+                                                        </Label>
+                                                    </children>
+                                                </VBox>
+
+                                            </children>
+                                        </VBox>
+
+                                        <VBox spacing="10.0"
+                                              style="-fx-background-color: #ffffff; -fx-background-radius: 12; -fx-padding: 14 16 14 16;">
+                                            <effect><DropShadow color="#00000010" offsetY="2.0" radius="8.0"/></effect>
+                                            <children>
+                                                <HBox spacing="10.0" alignment="CENTER_RIGHT">
+                                                    <children>
+                                                        <Label fx:id="lblStatus" text="" textFill="#e74c3c" HBox.hgrow="ALWAYS">
+                                                            <font><Font name="System Bold" size="12.0"/></font>
+                                                        </Label>
+                                                        <Button mnemonicParsing="false" onAction="#handleClear"
+                                                                text="Clear Form" prefHeight="36.0" prefWidth="120.0"
+                                                                style="-fx-background-color: transparent; -fx-border-color: #cccccc;
+                                                                       -fx-border-radius: 7; -fx-background-radius: 7;
+                                                                       -fx-text-fill: #666666; -fx-cursor: hand;">
+                                                            <font><Font size="12.0"/></font>
+                                                        </Button>
+                                                        <Button mnemonicParsing="false" onAction="#showReservations"
+                                                                text="Cancel" prefHeight="36.0" prefWidth="90.0"
+                                                                style="-fx-background-color: transparent; -fx-border-color: #cccccc;
+                                                                       -fx-border-radius: 7; -fx-background-radius: 7;
+                                                                       -fx-text-fill: #e74c3c; -fx-cursor: hand;">
+                                                            <font><Font size="12.0"/></font>
+                                                        </Button>
+                                                        <Button fx:id="btnSave" mnemonicParsing="false" onAction="#handleSaveReservation"
+                                                                text="&#x1F4BE;  Save Reservation" prefHeight="36.0" prefWidth="175.0"
+                                                                style="-fx-background-color: #d4af37; -fx-background-radius: 7;
+                                                                       -fx-text-fill: #05142b; -fx-cursor: hand;">
+                                                            <font><Font name="System Bold" size="12.0"/></font>
+                                                        </Button>
+                                                    </children>
+                                                </HBox>
+                                            </children>
+                                        </VBox>
+
+                                    </children>
+                                </VBox>
+
+                                <VBox spacing="14.0" prefWidth="280.0">
+                                    <children>
+
+                                        <VBox spacing="10.0"
+                                              style="-fx-background-color: #05142b; -fx-background-radius: 12; -fx-padding: 14 16 14 16;">
+                                            <effect><DropShadow color="#00000025" offsetY="2.0" radius="8.0"/></effect>
+                                            <children>
+                                                <HBox alignment="CENTER_LEFT" spacing="8.0">
+                                                    <children>
+                                                        <Label text="&#x1F9FE;" style="-fx-font-size: 16px;"/>
+                                                        <Label text="Booking Summary" textFill="#d4af37">
+                                                            <font><Font name="System Bold" size="13.0"/></font>
+                                                        </Label>
+                                                    </children>
+                                                </HBox>
+
+                                                <Rectangle height="1.0" width="248.0" fill="#1e3a5f"/>
+
+                                                <HBox><children>
+                                                    <Label text="Room Type" textFill="#a0b3c6" prefWidth="110.0"><font><Font size="11.0"/></font></Label>
+                                                    <Label fx:id="summRoomType" text="—" textFill="#ffffff"><font><Font name="System Bold" size="11.0"/></font></Label>
+                                                </children></HBox>
+                                                <HBox><children>
+                                                    <Label text="Check-In" textFill="#a0b3c6" prefWidth="110.0"><font><Font size="11.0"/></font></Label>
+                                                    <Label fx:id="summCheckIn" text="—" textFill="#ffffff"><font><Font name="System Bold" size="11.0"/></font></Label>
+                                                </children></HBox>
+                                                <HBox><children>
+                                                    <Label text="Check-Out" textFill="#a0b3c6" prefWidth="110.0"><font><Font size="11.0"/></font></Label>
+                                                    <Label fx:id="summCheckOut" text="—" textFill="#ffffff"><font><Font name="System Bold" size="11.0"/></font></Label>
+                                                </children></HBox>
+                                                <HBox><children>
+                                                    <Label text="Nights" textFill="#a0b3c6" prefWidth="110.0"><font><Font size="11.0"/></font></Label>
+                                                    <Label fx:id="summNights" text="—" textFill="#ffffff"><font><Font name="System Bold" size="11.0"/></font></Label>
+                                                </children></HBox>
+                                                <HBox><children>
+                                                    <Label text="Rate / Night" textFill="#a0b3c6" prefWidth="110.0"><font><Font size="11.0"/></font></Label>
+                                                    <Label fx:id="summRate" text="—" textFill="#ffffff"><font><Font name="System Bold" size="11.0"/></font></Label>
+                                                </children></HBox>
+
+                                                <Rectangle height="1.0" width="248.0" fill="#1e3a5f"/>
+
+                                                <HBox alignment="CENTER_LEFT"><children>
+                                                    <Label text="TOTAL" textFill="#a0b3c6" prefWidth="110.0">
+                                                        <font><Font name="System Bold" size="10.0"/></font>
+                                                    </Label>
+                                                    <Label fx:id="summTotal" text="LKR 0.00" textFill="#d4af37">
+                                                        <font><Font name="System Bold" size="20.0"/></font>
+                                                    </Label>
+                                                </children></HBox>
+                                            </children>
+                                        </VBox>
+
+                                        <VBox spacing="8.0"
+                                              style="-fx-background-color: #ffffff; -fx-background-radius: 12; -fx-padding: 14 16 14 16;">
+                                            <effect><DropShadow color="#00000010" offsetY="2.0" radius="8.0"/></effect>
+                                            <children>
+                                                <Label text="&#x1F4B0;  Room Rates (per night)" textFill="#05142b">
+                                                    <font><Font name="System Bold" size="13.0"/></font>
+                                                </Label>
+                                                <HBox><children>
+                                                    <Label text="Standard"   textFill="#555555" prefWidth="120.0"><font><Font size="12.0"/></font></Label>
+                                                    <Label text="LKR 8,500"  textFill="#05142b"><font><Font name="System Bold" size="12.0"/></font></Label>
+                                                </children></HBox>
+                                                <HBox><children>
+                                                    <Label text="Deluxe"     textFill="#555555" prefWidth="120.0"><font><Font size="12.0"/></font></Label>
+                                                    <Label text="LKR 12,000" textFill="#05142b"><font><Font name="System Bold" size="12.0"/></font></Label>
+                                                </children></HBox>
+                                                <HBox><children>
+                                                    <Label text="Suite"      textFill="#555555" prefWidth="120.0"><font><Font size="12.0"/></font></Label>
+                                                    <Label text="LKR 18,500" textFill="#05142b"><font><Font name="System Bold" size="12.0"/></font></Label>
+                                                </children></HBox>
+                                            </children>
+                                        </VBox>
+
+                                        <VBox spacing="8.0"
+                                              style="-fx-background-color: #ffffff; -fx-background-radius: 12; -fx-padding: 14 16 14 16;
+                                                     -fx-border-color: #d4af37; -fx-border-radius: 12; -fx-border-width: 1.5;">
+                                            <effect><DropShadow color="#00000010" offsetY="2.0" radius="8.0"/></effect>
+                                            <children>
+                                                <Label text="&#x2139;&#xFE0F;  Tips" textFill="#05142b">
+                                                    <font><Font name="System Bold" size="13.0"/></font>
+                                                </Label>
+                                                <Label text="• Fields marked  * are required." textFill="#666666" wrapText="true">
+                                                    <font><Font size="11.0"/></font>
+                                                </Label>
+                                                <Label text="• Total updates automatically." textFill="#666666" wrapText="true">
+                                                    <font><Font size="11.0"/></font>
+                                                </Label>
+                                                <Label text="• Res. No. is generated on save." textFill="#666666" wrapText="true">
+                                                    <font><Font size="11.0"/></font>
+                                                </Label>
+                                            </children>
+                                        </VBox>
+
+                                    </children>
+                                </VBox>
+
+                            </children>
+                        </HBox>
+                    </content>
+                </ScrollPane>
+
+            </children>
+        </VBox>
+
+    </children>
+</AnchorPane>
