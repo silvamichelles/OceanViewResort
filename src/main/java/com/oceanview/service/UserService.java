@@ -1,30 +1,28 @@
 package com.oceanview.service;
 
-import com.oceanview.network.WebServiceClient;
+import com.oceanview.dao.UserDAO;
+import com.oceanview.dao.impl.UserDAOImpl;
 
 /**
- * Service Layer acts as a Proxy for the distributed Web Service.
- * Controllers call this class without knowing it fetches data from a REST API.
+ * Service Layer for User Authentication.
+ * Delegates to the UserDAO for database operations.
  */
 public class UserService {
 
-    public boolean login(String username, String password) {
-        try {
-            // DAO එක වෙනුවට Web Service එකට Request එකක් යැවීම
-            return WebServiceClient.loginViaApi(username, password);
-        } catch (Exception e) {
-            System.err.println("API Error during login: " + e.getMessage());
-            return false; // API එක වැඩ නැත්නම් False යවයි
-        }
+    private final UserDAO userDAO;
+
+    public UserService() {
+        this.userDAO = new UserDAOImpl();
     }
 
-    public boolean registerUser(String username, String password, String role) {
-        try {
-            // DAO එක වෙනුවට Web Service එකට Request එකක් යැවීම
-            return WebServiceClient.registerViaApi(username, password, role);
-        } catch (Exception e) {
-            System.err.println("API Error during registration: " + e.getMessage());
+    /**
+     * Authenticates a user by checking credentials against the database.
+     */
+    public boolean login(String username, String password) {
+        if (username == null || username.trim().isEmpty() ||
+            password == null || password.trim().isEmpty()) {
             return false;
         }
+        return userDAO.authenticate(username, password);
     }
 }

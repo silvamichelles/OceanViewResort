@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>OceanView Resort — Dashboard</title>
+  <link rel="stylesheet" href="assets/styles.css"/>
+</head>
+<body class="dashboard-page">
+
+  <!-- ===== TOP NAV ===== -->
+  <nav class="top-nav">
+    <span class="brand">OceanView Resort</span>
+    <div class="nav-links">
+      <a href="#rooms" class="nav-link active" data-section="rooms">Rooms</a>
+      <a href="#reservations" class="nav-link" data-section="reservations">Reservations</a>
+      <a href="logout" class="nav-link logout">Logout</a>
+    </div>
+  </nav>
+
+  <!-- ===== STATS CARDS ===== -->
+  <main class="main-content">
+    <h2>Dashboard</h2>
+    <div class="stats-grid" id="stats-grid">
+      <div class="stat-card"><div class="stat-value" id="stat-total-rooms">—</div><div class="stat-label">Total Rooms</div></div>
+      <div class="stat-card"><div class="stat-value" id="stat-occupied">—</div><div class="stat-label">Occupied</div></div>
+      <div class="stat-card"><div class="stat-value" id="stat-available">—</div><div class="stat-label">Available</div></div>
+      <div class="stat-card"><div class="stat-value" id="stat-reservations">—</div><div class="stat-label">Reservations</div></div>
+    </div>
+
+    <!-- ===== NEW RESERVATION FORM ===== -->
+    <section id="section-reservations" class="section">
+      <h3>New Reservation</h3>
+      <div id="form-message"></div>
+      <form id="reservation-form" class="res-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Reservation No.</label>
+            <input type="text" name="resNo" placeholder="e.g. RES-001" required/>
+          </div>
+          <div class="form-group">
+            <label>Guest ID</label>
+            <input type="number" name="guestId" placeholder="Guest ID" required min="1"/>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Room</label>
+            <select name="roomId" id="room-select" required>
+              <option value="">— Select Room —</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Check-In</label>
+            <input type="date" name="checkIn" required/>
+          </div>
+          <div class="form-group">
+            <label>Check-Out</label>
+            <input type="date" name="checkOut" required/>
+          </div>
+        </div>
+        <button type="submit" class="btn-primary">Save Reservation</button>
+      </form>
+    </section>
+
+    <!-- ===== RECENT RESERVATIONS TABLE ===== -->
+    <section class="section">
+      <h3>Recent Reservations</h3>
+      <div class="table-wrapper">
+        <table id="reservations-table">
+          <thead>
+            <tr>
+              <th>Res No.</th><th>Guest ID</th><th>Room ID</th>
+              <th>Check-In</th><th>Check-Out</th><th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="reservations-tbody">
+            <tr><td colspan="6" class="loading-cell">Loading…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const ctx = document.querySelector('base') ? document.querySelector('base').href : '';
+
+    // ---- Load dashboard stats ----
+    fetch('api/dashboard')
+      .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(data => {
+        document.getElementById('stat-total-rooms').textContent    = data.totalRooms    ?? '—';
+        document.getElementById('stat-occupied').textContent       = data.occupied       ?? '—';
+        document.getElementById('stat-available').textContent      = data.available      ?? '—';
+        document.getElementById('stat-reservations').textContent   = data.totalReservations ?? '—';
+      })
+      .catch(() => {});
+
+    // ---- Populate room dropdown ----
+    fetch('api/reservations/rooms')
+      .then(r => r.json())
+      .then(rooms => {
+        const sel = document.getElementById('room-select');
+        rooms.forEach(r => {
+          const opt = document.createElement('option');
+          opt.value = r; opt.textContent = 'Room ' + r;
+          sel.appendChild(opt);
+        });
+      })
+      .catch(() => {});
+
+    // ---- Load recent reservations ----
+    function loadReservations() {
+      fetch('api/reservations')
+        .then(r => r.json())
+        .then(list => {
+          const tbody = document.getElementById('reservations-tbody');
+          if (!list.length) { tbody.innerHTML = '<tr><td colspan="6" class="loading-cell">No reservations found.</td></tr>'; return; }
+          tbody.innerHTML = list.map(r =>
+            `<tr>
+               <td>${r.reservationNo ?? r.resNo ?? ''}</td>
+               <td>${r.guestId ?? ''}</td>
+               <td>${r.roomId ?? ''}</td>
+               <td>${r.checkIn ?? ''}</td>
+               <td>${r.checkOut ?? ''}</td>
+               <td>${r.status ?? ''}</td>
+             </tr>`
+          ).join('');
+        })
+        .catch(() => {
+          document.getElementById('reservations-tbody').innerHTML =
+            '<tr><td colspan="6" class="loading-cell">Could not load reservations.</td></tr>';
+        });
+    }
+    loadReservations();
+
+    // ---- Submit reservation form ----
+    document.getElementById('reservation-form').addEventListener('submit', e => {
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      const msg = document.getElementById('form-message');
+
+      fetch('api/reservations', { method: 'POST', body: new URLSearchParams(fd) })
+        .then(r => r.json())
+        .then(data => {
+          if (data.status === 'success') {
+            msg.className = 'alert success'; msg.textContent = 'Reservation saved!';
+            e.target.reset(); loadReservations();
+          } else {
+            msg.className = 'alert error'; msg.textContent = data.message || 'Validation failed.';
+          }
+        })
+        .catch(() => { msg.className = 'alert error'; msg.textContent = 'Server error.'; });
+    });
+  </script>
+</body>
+</html>
