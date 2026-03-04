@@ -11,10 +11,16 @@ C:\Users\LENOVO\OneDrive\Desktop\GitHub\OceanViewResort\src\main\java\com\oceanv
 C:\Users\LENOVO\OneDrive\Desktop\GitHub\OceanViewResort\src\main\java\com\oceanview\model\Reservation.java
 C:\Users\LENOVO\OneDrive\Desktop\GitHub\OceanViewResort\src\main\java\com\oceanview\model\Room.java
 C:\Users\LENOVO\OneDrive\Desktop\GitHub\OceanViewResort\src\main\java\com\oceanview\service\BillingService.java
+C:\Users\LENOVO\OneDrive\Desktop\GitHub\OceanViewResort\src\main\java\com\oceanview\service\GuestService.java
 C:\Users\LENOVO\OneDrive\Desktop\GitHub\OceanViewResort\src\main\java\com\oceanview\service\ReservationService.java
 C:\Users\LENOVO\OneDrive\Desktop\GitHub\OceanViewResort\src\main\java\com\oceanview\service\RoomService.java
 C:\Users\LENOVO\OneDrive\Desktop\GitHub\OceanViewResort\src\main\java\com\oceanview\service\UserService.java
+C:\Users\LENOVO\OneDrive\Desktop\GitHub\OceanViewResort\src\main\java\com\oceanview\servlet\AuthFilter.java
+C:\Users\LENOVO\OneDrive\Desktop\GitHub\OceanViewResort\src\main\java\com\oceanview\servlet\BaseApiServlet.java
+C:\Users\LENOVO\OneDrive\Desktop\GitHub\OceanViewResort\src\main\java\com\oceanview\servlet\BillingServlet.java
 C:\Users\LENOVO\OneDrive\Desktop\GitHub\OceanViewResort\src\main\java\com\oceanview\servlet\DashboardServlet.java
+C:\Users\LENOVO\OneDrive\Desktop\GitHub\OceanViewResort\src\main\java\com\oceanview\servlet\GuestServlet.java
 C:\Users\LENOVO\OneDrive\Desktop\GitHub\OceanViewResort\src\main\java\com\oceanview\servlet\LoginServlet.java
 C:\Users\LENOVO\OneDrive\Desktop\GitHub\OceanViewResort\src\main\java\com\oceanview\servlet\LogoutServlet.java
 C:\Users\LENOVO\OneDrive\Desktop\GitHub\OceanViewResort\src\main\java\com\oceanview\servlet\ReservationServlet.java
+C:\Users\LENOVO\OneDrive\Desktop\GitHub\OceanViewResort\src\main\java\com\oceanview\servlet\RoomServlet.java

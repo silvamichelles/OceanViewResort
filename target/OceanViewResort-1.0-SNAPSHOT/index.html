@@ -4,40 +4,86 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>OceanView Resort — Staff Login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="assets/styles.css"/>
 </head>
 <body class="login-page">
+
   <div class="login-card">
-    <div class="brand">
+
+    <!-- ── Brand ── -->
+    <div class="login-logo">
+      <div class="logo-icon">🌊</div>
       <h1>OceanView Resort</h1>
       <p>Staff Management Portal</p>
     </div>
 
-    <!-- Show error banner when ?error=invalid is in the URL -->
-    <div id="error-banner" class="error-banner hidden">
-      Invalid username or password. Please try again.
+    <!-- ── Alert banners (shown via URL params) ── -->
+    <div id="banner-invalid" class="alert-banner error hidden">
+      ⚠️ Invalid username or password. Please try again.
+    </div>
+    <div id="banner-empty" class="alert-banner error hidden">
+      ⚠️ Please enter both username and password.
+    </div>
+    <div id="banner-session" class="alert-banner info hidden">
+      🔒 Your session has expired. Please log in again.
+    </div>
+    <div id="banner-logout" class="alert-banner success hidden">
+      ✅ You have been successfully logged out.
     </div>
 
-    <form action="login" method="post" class="login-form">
+    <!-- ── Login form ── -->
+    <form action="login" method="post" class="login-form" id="login-form">
       <div class="form-group">
         <label for="username">Username</label>
-        <input type="text" id="username" name="username"
-               placeholder="Enter username" required autofocus/>
+        <div class="input-icon-wrap">
+          <span class="icon">👤</span>
+          <input type="text" id="username" name="username"
+                 placeholder="Enter your username"
+                 autocomplete="username" required autofocus/>
+        </div>
       </div>
+
       <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" id="password" name="password"
-               placeholder="Enter password" required/>
+        <div class="input-icon-wrap">
+          <span class="icon">🔑</span>
+          <input type="password" id="password" name="password"
+                 placeholder="Enter your password"
+                 autocomplete="current-password" required/>
+        </div>
       </div>
-      <button type="submit" class="btn-primary">Sign In</button>
+
+      <button type="submit" class="btn btn-primary">
+        Sign In →
+      </button>
     </form>
+
+    <p style="text-align:center;margin-top:1.25rem;font-size:.75rem;color:var(--gray-400);">
+      OceanView Resort Management System &copy; 2026
+    </p>
   </div>
 
   <script>
-    // Show error banner if redirected with ?error=invalid
-    if (new URLSearchParams(window.location.search).get('error') === 'invalid') {
-      document.getElementById('error-banner').classList.remove('hidden');
-    }
+    // Show the correct alert based on URL parameter
+    const params = new URLSearchParams(window.location.search);
+    const err = params.get('error');
+    const logout = params.get('logout');
+    if (err === 'invalid')  document.getElementById('banner-invalid').classList.remove('hidden');
+    if (err === 'empty')    document.getElementById('banner-empty').classList.remove('hidden');
+    if (err === 'session')  document.getElementById('banner-session').classList.remove('hidden');
+    if (logout === 'true')  document.getElementById('banner-logout').classList.remove('hidden');
+
+    // Clear error params from URL bar without reload
+    if (err || logout) history.replaceState({}, '', window.location.pathname);
+
+    // Disable submit briefly to prevent double-click
+    document.getElementById('login-form').addEventListener('submit', function() {
+      const btn = this.querySelector('[type=submit]');
+      btn.disabled = true;
+      btn.innerHTML = '<span style="display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle"></span> Signing in…';
+    });
   </script>
 </body>
 </html>
