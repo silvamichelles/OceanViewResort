@@ -9,6 +9,7 @@ com\oceanview\servlet\AuthFilter.class
 com\oceanview\servlet\DashboardServlet.class
 com\oceanview\servlet\LoginServlet.class
 com\oceanview\service\BillingService.class
+com\oceanview\servlet\UserServlet.class
 com\oceanview\service\GuestService.class
 com\oceanview\dao\impl\ReservationDAOImpl.class
 com\oceanview\service\ReservationService.class

@@ -1,56 +1,76 @@
-/**
- * api.js  –  Thin Fetch API wrapper for OceanView Resort
- * All requests include X-Requested-With for servlet-side XHR detection.
+﻿/**
+ * OceanView Resort  API Fetch Wrapper
+ * Thin wrapper around the Fetch API for clean, centralized HTTP calls.
  */
-const API = (() => {
-  const BASE = document.querySelector('base')?.href?.replace(/\/$/, '') ?? '';
+const API = (function () {
 
-  const headers = (extra = {}) => ({
-    'X-Requested-With': 'XMLHttpRequest',
-    ...extra,
-  });
+  // Detect the WAR context path from the current URL
+  // e.g. /OceanViewResort-1.0-SNAPSHOT/  base is that prefix
+  const base = (function () {
+    const path = window.location.pathname; // "/OceanViewResort-1.0-SNAPSHOT/dashboard.html"
+    const idx  = path.lastIndexOf('/');
+    return path.substring(0, idx);         // "/OceanViewResort-1.0-SNAPSHOT"
+  })();
 
-  /** Handle 401 → redirect to login */
-  async function handle(res) {
+  const DEFAULT_HEADERS = {
+    'X-Requested-With': 'XMLHttpRequest'
+  };
+
+  // Build full URL: API.get('api/dashboard')  /ContextPath/api/dashboard
+  function url(path) {
+    const p = path.startsWith('/') ? path : '/' + path;
+    return base + p;
+  }
+
+  async function handleResponse(res) {
     if (res.status === 401) {
-      window.location.href = BASE + '/index.html?error=session';
-      throw new Error('Session expired');
+      window.location.href = base + '/index.html?error=session';
+      return null;
     }
-    const text = await res.text();
-    let json;
-    try { json = JSON.parse(text); } catch { json = { raw: text }; }
-    if (!res.ok) throw Object.assign(new Error(json.message ?? 'Server error'), { status: res.status, data: json });
-    return json;
+    const contentType = res.headers.get('content-type') || '';
+    const data = contentType.includes('application/json') ? await res.json() : await res.text();
+    return { ok: res.ok, status: res.status, data };
   }
 
-  async function get(path) {
-    const res = await fetch(BASE + path, { headers: headers() });
-    return handle(res);
+  async function get(path, params) {
+    let fullUrl = url(path);
+    if (params) {
+      const qs = new URLSearchParams(params).toString();
+      fullUrl += '?' + qs;
+    }
+    const res = await fetch(fullUrl, { headers: DEFAULT_HEADERS });
+    return handleResponse(res);
   }
 
-  async function post(path, data) {
-    const isForm = data instanceof FormData || data instanceof URLSearchParams;
-    const body = isForm ? new URLSearchParams(data) : JSON.stringify(data);
-    const hdrs = headers(isForm ? { 'Content-Type': 'application/x-www-form-urlencoded' }
-                                : { 'Content-Type': 'application/json' });
-    const res = await fetch(BASE + path, { method: 'POST', headers: hdrs, body });
-    return handle(res);
+  async function post(path, body) {
+    const isFormData = body instanceof FormData || body instanceof URLSearchParams;
+    const headers = { ...DEFAULT_HEADERS };
+    let bodyStr;
+    if (isFormData || body instanceof URLSearchParams) {
+      bodyStr = body;
+    } else if (typeof body === 'object') {
+      headers['Content-Type'] = 'application/x-www-form-urlencoded';
+      bodyStr = new URLSearchParams(body).toString();
+    } else {
+      bodyStr = body;
+    }
+    const res = await fetch(url(path), { method: 'POST', headers, body: bodyStr });
+    return handleResponse(res);
   }
 
-  async function put(path, data) {
-    const body = new URLSearchParams(data);
-    const res = await fetch(BASE + path, {
-      method: 'PUT',
-      headers: headers({ 'Content-Type': 'application/x-www-form-urlencoded' }),
-      body,
-    });
-    return handle(res);
+  async function put(path, body) {
+    const headers = { ...DEFAULT_HEADERS, 'Content-Type': 'application/x-www-form-urlencoded' };
+    const bodyStr = (typeof body === 'object' && !(body instanceof URLSearchParams))
+      ? new URLSearchParams(body).toString()
+      : body;
+    const res = await fetch(url(path), { method: 'PUT', headers, body: bodyStr });
+    return handleResponse(res);
   }
 
   async function del(path) {
-    const res = await fetch(BASE + path, { method: 'DELETE', headers: headers() });
-    return handle(res);
+    const res = await fetch(url(path), { method: 'DELETE', headers: DEFAULT_HEADERS });
+    return handleResponse(res);
   }
 
-  return { get, post, put, delete: del };
+  return { get, post, put, delete: del, url };
 })();
