@@ -4,12 +4,13 @@ com\oceanview\controller\GuestsController.class
 com\oceanview\dao\impl\RoomDAOImpl.class
 com\oceanview\network\WebServiceClient.class
 com\oceanview\main\AppWrapper.class
-com\oceanview\network\OceanViewServer$2.class
+com\oceanview\network\OceanViewServer$AuthHandler.class
 com\oceanview\service\UserService.class
 com\oceanview\controller\AddReservationController.class
 com\oceanview\model\Reservation.class
 com\oceanview\service\BillingService.class
 com\oceanview\network\OceanViewServer$ThrowingSupplier.class
+com\oceanview\network\OceanViewServer$RootHandler.class
 com\oceanview\dao\impl\ReservationDAOImpl.class
 com\oceanview\service\ReservationService.class
 com\oceanview\dao\UserDAO.class
@@ -20,7 +21,7 @@ com\oceanview\controller\DashboardController.class
 com\oceanview\network\WebServiceClient$ApiException.class
 com\oceanview\controller\RoomsController.class
 com\oceanview\dao\GuestDAO.class
-com\oceanview\network\OceanViewServer$1.class
+com\oceanview\network\OceanViewServer$AuthHandler$1.class
 com\oceanview\controller\BillingController.class
 com\oceanview\db\DBConnection.class
 com\oceanview\main\Main.class
