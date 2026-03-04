@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import java.io.IOException;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
 
 /**
  * Security filter – protects the dashboard page and all /api/* endpoints.
@@ -14,6 +16,16 @@ import java.io.IOException;
  */
 @WebFilter(urlPatterns = {"/dashboard.html", "/api/*"})
 public class AuthFilter implements Filter {
+
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException {
+        // no-op — no resources to acquire
+    }
+
+    @Override
+    public void destroy() {
+        // no-op — no resources to release
+    }
 
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
